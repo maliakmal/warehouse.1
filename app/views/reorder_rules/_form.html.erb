@@ -1,0 +1,14 @@
+<%= simple_form_for(@reorder_rule) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :product %>
+    <%= f.input :minimum_stock %>
+    <%= f.input :maximum_stock %>
+    <%= f.association :company %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

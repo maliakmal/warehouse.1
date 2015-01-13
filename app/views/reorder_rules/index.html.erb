@@ -1,0 +1,31 @@
+<h1>Listing reorder_rules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Minimum stock</th>
+      <th>Maximum stock</th>
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reorder_rules.each do |reorder_rule| %>
+      <tr>
+        <td><%= reorder_rule.product %></td>
+        <td><%= reorder_rule.minimum_stock %></td>
+        <td><%= reorder_rule.maximum_stock %></td>
+        <td><%= reorder_rule.company %></td>
+        <td><%= link_to 'Show', reorder_rule %></td>
+        <td><%= link_to 'Edit', edit_reorder_rule_path(reorder_rule) %></td>
+        <td><%= link_to 'Destroy', reorder_rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reorder rule', new_reorder_rule_path %>

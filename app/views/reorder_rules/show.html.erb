@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @reorder_rule.product %>
+</p>
+
+<p>
+  <strong>Minimum stock:</strong>
+  <%= @reorder_rule.minimum_stock %>
+</p>
+
+<p>
+  <strong>Maximum stock:</strong>
+  <%= @reorder_rule.maximum_stock %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @reorder_rule.company %>
+</p>
+
+<%= link_to 'Edit', edit_reorder_rule_path(@reorder_rule) %> |
+<%= link_to 'Back', reorder_rules_path %>

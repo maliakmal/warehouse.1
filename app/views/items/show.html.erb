@@ -1,29 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Item -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Item %></h1>
+</div>
 
-<p>
-  <strong>Picking order:</strong>
-  <%= @item.picking_order %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:qty) %></dt>
+      <dd><pre class="prettyprint"><%= @item.qty %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Product:</strong>
-  <%= @item.product %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              items_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_item_path(@item), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              item_path(@item),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @item.location %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @item.location %>
-</p>
-
-<p>
-  <strong>Qty:</strong>
-  <%= @item.qty %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>

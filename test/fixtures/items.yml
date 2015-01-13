@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  picking_order_id: 
+  product_id: 
+  location_id: 
+  location_id: 
+  qty: 1
+
+two:
+  picking_order_id: 
+  product_id: 
+  location_id: 
+  location_id: 
+  qty: 1

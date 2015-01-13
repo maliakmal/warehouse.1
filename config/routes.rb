@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :picking_orders
+
   resources :items
 
   resources :orders

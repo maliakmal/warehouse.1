@@ -1,6 +1,5 @@
-<h1>Editing reorder_rule</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @reorder_rule %> |
-<%= link_to 'Back', reorder_rules_path %>
+<%- model_class = ReorderRule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => ReorderRule %></h1>
+</div>
+<%= render :partial => 'form' %>

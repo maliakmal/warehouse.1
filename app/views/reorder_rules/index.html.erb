@@ -1,31 +1,38 @@
-<h1>Listing reorder_rules</h1>
-
-<table>
+<%- model_class = ReorderRule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ReorderRule %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Product</th>
-      <th>Minimum stock</th>
-      <th>Maximum stock</th>
-      <th>Company</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:minimum_stock) %></th>
+      <th><%= model_class.human_attribute_name(:maximum_stock) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @reorder_rules.each do |reorder_rule| %>
       <tr>
-        <td><%= reorder_rule.product %></td>
+        <td><%= reorder_rule.id %></td>
         <td><%= reorder_rule.minimum_stock %></td>
         <td><%= reorder_rule.maximum_stock %></td>
-        <td><%= reorder_rule.company %></td>
-        <td><%= link_to 'Show', reorder_rule %></td>
-        <td><%= link_to 'Edit', edit_reorder_rule_path(reorder_rule) %></td>
-        <td><%= link_to 'Destroy', reorder_rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l reorder_rule.created_at, format: :long %></td>
+        <td>
+          <%= link_to reorder_rule_path(reorder_rule), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to reorder_rule_path(reorder_rule), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Reorder rule', new_reorder_rule_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_reorder_rule_path,
+            :class => 'btn btn-primary' %>

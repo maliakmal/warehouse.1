@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = ReorderRule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ReorderRule %></h1>
+</div>
 
-<p>
-  <strong>Product:</strong>
-  <%= @reorder_rule.product %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:minimum_stock) %></dt>
+      <dd><pre class="prettyprint"><%= @reorder_rule.minimum_stock %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:maximum_stock) %></dt>
+      <dd><pre class="prettyprint"><%= @reorder_rule.maximum_stock %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Minimum stock:</strong>
-  <%= @reorder_rule.minimum_stock %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              reorder_rules_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_reorder_rule_path(@reorder_rule), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              reorder_rule_path(@reorder_rule),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Maximum stock:</strong>
-  <%= @reorder_rule.maximum_stock %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @reorder_rule.company %>
-</p>
-
-<%= link_to 'Edit', edit_reorder_rule_path(@reorder_rule) %> |
-<%= link_to 'Back', reorder_rules_path %>

@@ -4,4 +4,5 @@ class Order < ActiveRecord::Base
   belongs_to :location
   belongs_to :company
   belongs_to :user
+  has_one :picking_order
 end

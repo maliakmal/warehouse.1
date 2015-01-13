@@ -1,6 +1,5 @@
-<h1>Editing picking_order</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @picking_order %> |
-<%= link_to 'Back', picking_orders_path %>
+<%- model_class = PickingOrder -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => PickingOrder %></h1>
+</div>
+<%= render :partial => 'form' %>

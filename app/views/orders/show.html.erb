@@ -1,69 +1,38 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Order %></h1>
+</div>
 
-<p>
-  <strong>Scheduled:</strong>
-  <%= @order.scheduled %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:scheduled) %></dt>
+      <dd><pre class="prettyprint"><%= @order.scheduled %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:ref) %></dt>
+      <dd><pre class="prettyprint"><%= @order.ref %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:type) %></dt>
+      <dd><pre class="prettyprint"><%= @order.type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:status) %></dt>
+      <dd><pre class="prettyprint"><%= @order.status %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:company_as) %></dt>
+      <dd><pre class="prettyprint"><%= @order.company_as %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:qty) %></dt>
+      <dd><pre class="prettyprint"><%= @order.qty %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @order.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:priority) %></dt>
+      <dd><pre class="prettyprint"><%= @order.priority %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Ref:</strong>
-  <%= @order.ref %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              orders_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_order_path(@order), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @order.type %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @order.product %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @order.location %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @order.location %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @order.company %>
-</p>
-
-<p>
-  <strong>Company as:</strong>
-  <%= @order.company_as %>
-</p>
-
-<p>
-  <strong>Qty:</strong>
-  <%= @order.qty %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @order.description %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= @order.priority %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

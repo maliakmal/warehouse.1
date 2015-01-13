@@ -1,49 +1,50 @@
-<h1>Listing orders</h1>
-
-<table>
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Order %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Scheduled</th>
-      <th>Ref</th>
-      <th>Type</th>
-      <th>Product</th>
-      <th>Location</th>
-      <th>Location</th>
-      <th>Status</th>
-      <th>Company</th>
-      <th>Company as</th>
-      <th>Qty</th>
-      <th>Description</th>
-      <th>Priority</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:scheduled) %></th>
+      <th><%= model_class.human_attribute_name(:ref) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:company_as) %></th>
+      <th><%= model_class.human_attribute_name(:qty) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:priority) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.id %></td>
         <td><%= order.scheduled %></td>
         <td><%= order.ref %></td>
         <td><%= order.type %></td>
-        <td><%= order.product %></td>
-        <td><%= order.location %></td>
-        <td><%= order.location %></td>
         <td><%= order.status %></td>
-        <td><%= order.company %></td>
         <td><%= order.company_as %></td>
         <td><%= order.qty %></td>
         <td><%= order.description %></td>
         <td><%= order.priority %></td>
-        <td><%= order.user %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l order.created_at, format: :long %></td>
+        <td>
+          <%= link_to order_path(order), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to order_path(order), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_order_path,
+            :class => 'btn btn-primary' %>

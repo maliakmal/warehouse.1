@@ -1,23 +1,58 @@
-<%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :scheduled %>
-    <%= f.input :ref %>
-    <%= f.input :type %>
-    <%= f.association :product %>
-    <%= f.association :location %>
-    <%= f.association :location %>
-    <%= f.input :status %>
-    <%= f.association :company %>
-    <%= f.input :company_as %>
-    <%= f.input :qty %>
-    <%= f.input :description %>
-    <%= f.input :priority %>
-    <%= f.association :user %>
+<%= form_for @order, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :scheduled, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :scheduled, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ref, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :ref, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :type, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :type, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :status, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_as, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :company_as, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :qty, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :qty, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :priority, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :priority, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  orders_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
